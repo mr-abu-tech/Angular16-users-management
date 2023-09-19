@@ -1,7 +1,6 @@
 <div class="form">
   <div class="title-container">
-    <h1 *ngIf="isAddMode">Add User</h1>
-    <h1 *ngIf="!isAddMode">Edit User</h1>
+    <h1>Add User</h1>
   </div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -41,7 +40,6 @@
         <option value=""></option>
         <option value="male">Male</option>
         <option value="female">Female</option>
-        <option value="other">Other</option>
       </select>
       <div *ngIf="submitted && f['gender'].errors" class="invalid-feedback">
         <div *ngIf="f['gender'].errors['required']">Gender is required</div>
