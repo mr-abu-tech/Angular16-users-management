@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import {
-  FormBuilder,
-  Validators,
-  FormGroup,
-  FormControl,
   AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators
 } from '@angular/forms';
-import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-add-edit-user',
