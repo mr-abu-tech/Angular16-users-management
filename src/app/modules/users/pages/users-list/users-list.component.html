@@ -6,9 +6,20 @@
   <ul class="list" *ngIf="!showSpinner && users; else loading">
     <li class="list-item" *ngFor="let user of users; trackBy: trackByFn">
       <a class="list-title" routerLink="/detail/{{ user.id }}">
-        {{ user.name }}</a
-      >
+        {{ user.name }}
+      </a>
       <p class="list-description">{{ user.email }}</p>
+      <button
+        (click)="deleteUser(user.id)"
+        class="btn btn-sm btn-danger btn-delete-user float-right text-center"
+        [disabled]="user.isDeleting"
+      >
+        <span
+          *ngIf="user.isDeleting"
+          class="spinner-border spinner-border-sm"
+        ></span>
+        <span *ngIf="!user.isDeleting">Delete</span>
+      </button>
     </li>
   </ul>
   <ng-template #loading> Loading... </ng-template>

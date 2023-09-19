@@ -32,7 +32,7 @@ export class AlertService {
 
   // main alert method
   alert(message: string, type: AlertType, options: Partial<Alert> = {}) {
-    const id = options.id || this.defaultId;
+    const id = options.id ?? this.defaultId;
     const alert = new Alert(
       id,
       type,

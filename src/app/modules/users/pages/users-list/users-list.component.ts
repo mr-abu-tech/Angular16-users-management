@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -25,8 +26,17 @@ export class UsersListComponent implements OnInit {
     });
   }
 
+  deleteUser(id: number) {
+    const user = this.users.find((x) => x.id === id);
+    if (!user) return;
+    user.isDeleting = true;
+    this.userService
+      .delete(id)
+      .pipe(first())
+      .subscribe(() => this.getUsers());
+  }
 
-  trackByFn(index: number, item: any): number {
+  trackByFn(_index: number, item: any): number {
     return item.id;
   }
 }
