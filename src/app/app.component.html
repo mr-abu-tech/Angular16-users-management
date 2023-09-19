@@ -1,11 +1,20 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark justify-content-center">
   <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-      <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+    <a
+      class="nav-item nav-link"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Home</a
+    >
+    <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active"
+      >Users</a
+    >
   </div>
 </nav>
 
 <!-- main app container -->
-<div class="app-container bg-light p-xxl-5">
+<div class="app-container bg-light">
+  <app-alert></app-alert>
   <router-outlet></router-outlet>
 </div>

@@ -3,10 +3,11 @@ import {
   AbstractControl,
   FormBuilder,
   FormGroup,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-add-edit-user',
@@ -24,7 +25,8 @@ export class AddEditUserComponent {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
@@ -40,9 +42,11 @@ export class AddEditUserComponent {
 
   onSubmit() {
     this.submitted = true;
+    this.alertService.clear();
     if (this.form.valid) {
       const userData = this.form.value;
       this.userService.createNewUser(userData).subscribe((_) => {
+        this.alertService.success('User added', { keepAfterRouteChange: true });
         this.router.navigate(['../'], { relativeTo: this.route });
       });
     }
@@ -50,6 +54,7 @@ export class AddEditUserComponent {
 
   onReset(): void {
     this.submitted = false;
+    this.alertService.clear();
     this.form.reset({ status: 'active' });
   }
 }
