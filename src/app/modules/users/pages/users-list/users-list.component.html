@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="title-container">
+    <h1>Users</h1>
+    <a routerLink="add" class="btn btn-sm btn-success mb-2">Add User</a>
+  </div>
+  <ul class="list" *ngIf="!showSpinner && users; else loading">
+    <li class="list-item" *ngFor="let user of users; trackBy: trackByFn">
+      <a class="list-title" routerLink="/detail/{{ user.id }}">
+        {{ user.name }}</a
+      >
+      <p class="list-description">{{ user.email }}</p>
+    </li>
+  </ul>
+  <ng-template #loading> Loading... </ng-template>
+</div>

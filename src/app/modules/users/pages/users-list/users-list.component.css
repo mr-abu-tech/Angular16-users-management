@@ -1,0 +1,35 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  .list-item {
+    padding: 40px 20px;
+    border-bottom: 2px solid #f3f3f3;
+    transition: 0.2s;
+    .list-title {
+      font-size: 20px;
+      text-decoration: none;
+      color: #0b4084;
+      margin: 0 0 15px 0;
+    }
+    .list-description {
+      color: #969696;
+      margin: 0;
+    }
+  }
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
